@@ -9,23 +9,28 @@ function Gallery() {
   const gallery_URL = "https://api.slingacademy.com/v1/sample-data/photos?offset=1&limit=20";
 
   async function downloadGallery() {
-    const response = await axios.get(gallery_URL);
-    // we console response of gallery request
-    console.log(response);
-    // log response.data
-    const getData = await response.data;
-    const result = getData.photos.map((photo) => {
-      return {
-        id:photo.id,
-        image: photo.url,
-        title: photo.title,
-        desc: photo.description,
-      };
-    });
-    console.log(result);
-    setGalleryList(result);
-
-    setLoading(false);
+    try {
+      const response = await axios.get(gallery_URL);
+      // we console response of gallery request
+      console.log(response);
+      // log response.data
+      const getData = await response.data;
+      const result = getData.photos.map((photo) => {
+        return {
+          id:photo.id,
+          image: photo.url,
+          title: photo.title,
+          desc: photo.description,
+        };
+      });
+      console.log(result);
+      setGalleryList(result);
+  
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching image:", error);
+    }
+   
   }
 
   useEffect(() => {
