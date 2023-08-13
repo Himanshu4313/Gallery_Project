@@ -16,6 +16,7 @@ function Gallery() {
     const getData = await response.data;
     const result = getData.photos.map((photo) => {
       return {
+        id:photo.id,
         image: photo.url,
         title: photo.title,
         desc: photo.description,
@@ -43,7 +44,7 @@ function Gallery() {
       <div className="gallery-wrapper">
          {loading ? 
         "Loading..." : galleryList.map((p , index) => 
-           <PhotoPrint key={index} photoUrl={p.image}/>
+           <PhotoPrint key={index} photoUrl={p.image} id={p.id}/>
         )}
       </div>
      
