@@ -2,8 +2,8 @@
 
 }
 .image-container img{
-    width: 400px;
-    height: 300px;
+    width: 300px;
+    height: 285px;
     cursor: pointer;
     border-radius: 5px;
     transition: all ;
@@ -16,4 +16,22 @@
 }
 .image-container {
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.detailsbtn{
+    padding: 8px 40px;
+    font-size: 18px;
+    color: #ffffff;
+    border: 0px;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #0066ff;
+    margin: 10px auto;
+    letter-spacing: 1px;
+}
+.detailsbtn:hover{
+    background-color: #0066ffb5;
 }

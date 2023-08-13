@@ -6,7 +6,7 @@ import PhotoPrint from "../GalleryPhoto/PhotoPrint";
 function Gallery() {
   const [loading, setLoading] = useState(true);
   const [galleryList, setGalleryList] = useState([]);
-  const gallery_URL = "https://api.slingacademy.com/v1/sample-data/photos";
+  const gallery_URL = "https://api.slingacademy.com/v1/sample-data/photos?offset=1&limit=20";
 
   async function downloadGallery() {
     const response = await axios.get(gallery_URL);
