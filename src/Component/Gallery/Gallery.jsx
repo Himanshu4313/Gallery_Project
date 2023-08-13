@@ -40,10 +40,13 @@ function Gallery() {
       <div className="header-container">
         <h1>Gallery</h1>
       </div>
-      {loading ? 
+      <div className="gallery-wrapper">
+         {loading ? 
         "Loading..." : galleryList.map((p , index) => 
            <PhotoPrint key={index} photoUrl={p.image}/>
         )}
+      </div>
+     
        
     </>
   );

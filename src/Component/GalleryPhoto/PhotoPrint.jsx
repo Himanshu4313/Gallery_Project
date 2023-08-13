@@ -1,8 +1,12 @@
+import './PhotoPrint.css'
 function PhotoPrint({photoUrl}){
     return (
         <>
         <div className="gallery-wrapper">
-            <img src={photoUrl} alt="img" id="image"/>
+            <div className='image-container'>
+                <img src={photoUrl} alt="img" id="image"/>
+            </div>
+            
         </div>
         </>
     );
