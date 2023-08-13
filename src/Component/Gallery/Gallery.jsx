@@ -5,7 +5,7 @@ import "./Gallery.css";
 import PhotoPrint from "../GalleryPhoto/PhotoPrint";
 function Gallery() {
   const [loading, setLoading] = useState(true);
-  const [galleryList , setGalleryList] = useState([]);
+  const [galleryList, setGalleryList] = useState([]);
   const gallery_URL = "https://api.slingacademy.com/v1/sample-data/photos";
 
   async function downloadGallery() {
@@ -13,37 +13,38 @@ function Gallery() {
     // we console response of gallery request
     console.log(response);
     // log response.data
-     const getData = response.data;
-      const result =  getData.photos.map((photo)=> {
-           return {
-              image:photo.url,
-              title:photo.title,
-              desc:photo.description,
-           }
-       })
-     console.log(result)
-     setGalleryList(result);
-     console.log(galleryList);
+    const getData = await response.data;
+    const result = getData.photos.map((photo) => {
+      return {
+        image: photo.url,
+        title: photo.title,
+        desc: photo.description,
+      };
+    });
+    console.log(result);
+    setGalleryList(result);
+
     setLoading(false);
   }
 
   useEffect(() => {
     downloadGallery();
   }, []);
+
+  // useEffect(() => {
+    
+  //   console.log('gallery',galleryList);
+  // }, [galleryList]);
   return (
     <>
       <div className="header-container">
         <h1>Gallery</h1>
-       
       </div>
-      {loading ? (
-        "Loading..."
-      ) : (
-        <PhotoPrint
-          photoUrl={"https://api.slingacademy.com/public/sample-photos/2.jpeg"}
-        />
-      )}
-      
+      {loading ? 
+        "Loading..." : galleryList.map((p , index) => 
+           <PhotoPrint key={index} photoUrl={p.image}/>
+        )}
+       
     </>
   );
 }
