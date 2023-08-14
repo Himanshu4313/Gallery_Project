@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./ImageDetails.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -10,20 +11,25 @@ function ImageDetails() {
   const ImageDetails_URL = `https://api.slingacademy.com/v1/sample-data/photos/${id}`;
 
   async function downloadSingleImageDetails() {
-    const response = await axios.get(ImageDetails_URL);
-    // log response
-    console.log(response);
-    //log response data
-    console.log(response.data);
-
-    const resData = response.data;
-    const detailsObj = {
-      photoUrl: resData.photo.url,
-      photoTitle: resData.photo.title,
-      photoDesc: resData.photo.description,
-    };
-    setPhotoDetails(detailsObj);
-    setIsLoading(false);
+    try {
+        const response = await axios.get(ImageDetails_URL);
+        // log response
+        console.log(response);
+        //log response data
+        console.log(response.data);
+    
+        const resData = response.data;
+        const detailsObj = {
+          photoUrl: resData.photo.url,
+          photoTitle: resData.photo.title,
+          photoDesc: resData.photo.description,
+        };
+        setPhotoDetails(detailsObj);
+        setIsLoading(false);
+    } catch (error) {
+        console.error("Error fetching image details:", error);
+    }
+   
   }
   useEffect(() => {
     downloadSingleImageDetails();
@@ -31,9 +37,12 @@ function ImageDetails() {
 
   return (
     <>
-      <h1>Image_Details</h1>
+       <Link to={'/'}>
+       <h1>Image_Details</h1>
+       </Link>
+      
       {isLoading ? (
-        "Loading Details.. "
+        <div className="loading">Loading Details..</div> 
       ) : (
         <div className="details-container">
           <div className="Image">
