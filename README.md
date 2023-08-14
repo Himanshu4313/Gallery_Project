@@ -1,7 +1,7 @@
 # This gallery project is build using react.js
    In this gallery project first we create a react app.
-   we create react-app using this cmd {npm create-react-app projectname}
-   But you create react app also using vite cmd {npm create vite@latest}
+   we create react-app using this cmd `npm create-react-app projectname`
+   But you create react app also using vite cmd `npm create vite@latest`
 # If you create react app then make this component inside the src folder of react application
 Syntax highlighting
 ```
